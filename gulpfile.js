@@ -10,7 +10,6 @@ var uglify = require('gulp-uglify');
 var babel = require("gulp-babel");
 var bower = require('gulp-bower');
 var reload = browserSync.reload;
-var deploy = require('gulp-gh-pages');
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass', 'fonts', 'bower', 'html', 'javascript', 'resources'], function() {
@@ -91,25 +90,5 @@ gulp.task('bower', function() {
     return bower('bower_components')
         .pipe(gulp.dest('app/lib/'));
 });
-
-
-gulp.task('browser-sync', function() {
-	browserSync({
-		server: {
-			baseDir: '_site'
-		}
-	});
-});
-
-/**
- * Deploy generated html along with other necessary files to the live GitHub repo
- */
-/**
- * Push build to gh-pages
- */
-gulp.task('deploy', function () {
-    return gulp.src("./dist/**/*")
-      .pipe(deploy())
-  });
 
 gulp.task('default', ['serve']);
