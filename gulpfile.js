@@ -98,6 +98,6 @@ gulp.task('default', ['serve']);
  * Push build to gh-pages
  */
 gulp.task('deploy', function () {
-    return gulp.dest("./app/**/*")
+    return gulp.dest("./app")
       .pipe(deploy())
   });
